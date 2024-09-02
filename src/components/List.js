@@ -1,12 +1,31 @@
 import React, { useState } from "react";
 
 const List = () => {
-  const [list, uselist] = useState("");
+  const [text, setText] = useState("");
+  const [line, setLine] = useState([]);
+
+  const upload = () => {
+    setLine([...line, text]);
+    console.log(line);
+    setText("");
+  };
+  const changeable = (e) => {
+    setText(e.target.value);
+  };
 
   return (
     <>
-      <input bg-ground-text="hello"></input>
-      <textarea>{list}</textarea>
+      <input onChange={changeable} value={text} enterKeyHint={upload}></input>
+      <button onClick={upload}>upload</button>
+      <ul>
+        {line.map((content) => {
+          return (
+            <div>
+              <li>{content}</li>
+            </div>
+          );
+        })}
+      </ul>
     </>
   );
 };
