@@ -6,7 +6,6 @@ const List = () => {
 
   const upload = () => {
     setLine([...line, text]);
-    console.log(line);
     setText("");
   };
   const changeable = (e) => {
@@ -15,14 +14,14 @@ const List = () => {
 
   return (
     <>
-      <input onChange={changeable} value={text} enterKeyHint={upload}></input>
+      <input onChange={changeable} value={text}></input>
       <button onClick={upload}>upload</button>
       <ul>
-        {line.map((content) => {
+        {line.map((content, idx) => {
           return (
-            <div>
+            <form key={idx}>
               <li>{content}</li>
-            </div>
+            </form>
           );
         })}
       </ul>
