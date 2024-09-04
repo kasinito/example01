@@ -1,53 +1,35 @@
 import React, { useState } from "react";
+import ConfigBox from "./ConfigBox";
 
 const List = () => {
   const [text, setText] = useState("");
   const [line, setLine] = useState([]);
-  const [idnum, setnum] = useState(1);
-  const [changeUp, setChangeUp] = useState(false);
-  const [fixNum, setFixNum] = useState("");
-  const [fixText, setFixText] = useState("");
+  const [idNum, setNum] = useState(1);
 
   const upload = (e) => {
     e.preventDefault();
     if (text !== "") {
       const llet = {
-        id: idnum,
+        id: idNum,
         text: text,
       };
 
       setLine([...line, llet]);
       setText("");
-      setnum(idnum + 1);
+      setNum(idNum + 1);
     }
   };
   const changeable = (e) => {
-    if (changeUp) {
-      setFixText(e.target.value);
-    } else {
-      setText(e.target.value);
-    }
+    setText(e.target.value);
   };
+
   const deleteText = (idx) => {
     setLine(line.filter((arr) => arr.id !== idx));
-  };
-  const reload = (e, idx) => {
     console.log(idx);
-    e.preventDefault();
-
-    if (fixText !== "") {
-      const lLet = {
-        id: idx,
-        text: fixText,
-      };
-      setLine(line.map((arr) => (arr.id === idx ? lLet : arr)));
-      setFixText("");
-    }
-    setChangeUp(false);
   };
-  const changeText = (idx) => {
-    setChangeUp(true);
-    setFixNum(idx);
+  const reLine = (lLet) => {
+    const fixContent = line.map((arr) => (arr.id === lLet.id ? lLet : arr));
+    setLine(fixContent);
   };
 
   return (
@@ -63,22 +45,14 @@ const List = () => {
 
       <ul>
         {line.map((content) => {
-          if (changeUp && fixNum === content.id) {
-            return (
-              <form key={content.id} onSubmit={(e) => reload(e, content.id)}>
-                <input onChange={changeable} value={fixText}></input>
-                <button>confirm</button>
-              </form>
-            );
-          } else {
-            return (
-              <div key={content.id}>
-                <li>{content.text}</li>
-                <button onClick={() => deleteText(content.id)}>delete</button>
-                <button onClick={() => changeText(content.id)}>rewrite</button>
-              </div>
-            );
-          }
+          return (
+            <ConfigBox
+              key={content.id}
+              content={content}
+              deleteText={deleteText}
+              reLine={reLine}
+            />
+          );
         })}
       </ul>
     </>
