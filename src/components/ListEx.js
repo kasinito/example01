@@ -7,9 +7,10 @@ const List = () => {
   const [text, setText] = useState("");
   const [line, setLine] = useState([]);
   const [changeUp, setChangeUp] = useState(false);
-  const [reloading, setReloading] = useState(false);
 
-  // const [conNum, setConNum] = useState(1);
+  // const [checked, setChecked] = useState(false);
+  // const [del_Num, setDel_Num] = useState([]);
+  // const [conNum, setConNum] = useState("");
 
   const haveTolist = async () => {
     await axios.get("http://localhost:3001/list").then((res) => {
@@ -27,7 +28,6 @@ const List = () => {
       await axios.post("http://localhost:3001/list", llet);
       setText("");
       console.log(llet);
-      setReloading(!reloading);
     }
   };
   const changeable = (e) => {
@@ -36,26 +36,23 @@ const List = () => {
 
   const deleteText = () => {
     // setLine(line.filter((arr) => arr.id !== idx));
-
     // setLine(line.filter((arr) => arr.isDone !== true));
-    console.log(line.find((arr) => arr.isDone === true).id);
-    const deleteNum = line.find((arr) => arr.isDone === true).id;
-    axios.delete(`http://localhost:3001/list/${deleteNum}`);
-    setReloading(!reloading);
+
+    axios.delete(
+      "http://localhost:3001/list",
+      line.filter((arr) => arr.isDone !== true)
+    );
   }; //삭제
 
   const reLine = (lLet) => {
-    // const fixContent = line.map((arr) => (arr.id === lLet.id ? lLet : arr));
-    axios.patch(`http://localhost:3001/list/${lLet.id}`, lLet);
-
+    const fixContent = line.map((arr) => (arr.id === lLet.id ? lLet : arr));
     // setLine(fixContent);
-    // setChangeUp(false);
-    setReloading(!reloading);
+    setChangeUp(false);
   }; //수정
 
   useEffect(() => {
     haveTolist();
-  }, [reloading]);
+  }, [line]);
 
   return (
     <>

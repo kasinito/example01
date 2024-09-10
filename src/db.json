@@ -1,0 +1,34 @@
+{
+  "list": [
+    {
+      "id": "94kd",
+      "text": "1번 포스트",
+      "idDone": false
+    },
+    {
+      "id": "i892",
+      "text": "2번 포스트",
+      "idDone": false
+    },
+    {
+      "id": "83jg",
+      "text": "3번 포스트",
+      "idDone": false
+    },
+    {
+      "id": "8bdu",
+      "text": "4번 포스트",
+      "idDone": false
+    },
+    {
+      "id": "eb1f",
+      "text": "sdfsdfsdf",
+      "isDone": false
+    },
+    {
+      "id": "eeb8",
+      "text": "fdagfadsa",
+      "isDone": false
+    }
+  ]
+}
