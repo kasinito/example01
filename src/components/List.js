@@ -49,7 +49,7 @@ const List = () => {
     axios.patch(`http://localhost:3001/list/${lLet.id}`, lLet);
 
     // setLine(fixContent);
-    // setChangeUp(false);
+    setChangeUp(false);
     setReloading(!reloading);
   }; //수정
 
