@@ -1,8 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const CheckBox = ({ content, reLine, changeUp }) => {
-  const [fixNum, setFixNum] = useState(content.id);
+const CheckBox = ({ content, reLine, changeUp, checker }) => {
   const [fixText, setFixText] = useState("");
 
   //   const changeText = (content) => {
@@ -17,7 +16,7 @@ const CheckBox = ({ content, reLine, changeUp }) => {
     e.preventDefault();
     if (fixText !== "") {
       const lLet = {
-        id: fixNum,
+        id: content.id,
         text: fixText,
         isDone: false,
       };
@@ -33,13 +32,15 @@ const CheckBox = ({ content, reLine, changeUp }) => {
     </form>
   ) : (
     <div key={content.id}>
-      <li>{content.text}</li>
+      <li style={{ textDecoration: content.finish && "line-through" }}>
+        {content.text}
+      </li>
       <input
         type="checkbox"
-        value={content.isDone}
+        checked={content.isDone}
+        //   value={content.isDone}
         onChange={() => {
-          content.isDone = !content.isDone;
-          console.log(content.isDone);
+          checker(content);
         }}
       />
     </div>

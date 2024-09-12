@@ -1,29 +1,34 @@
 {
   "list": [
     {
-      "id": "94kd",
-      "text": "1번 포스트",
-      "idDone": false
+      "id": "92a9",
+      "text": "3번",
+      "isDone": false,
+      "finish": false
     },
     {
-      "id": "i892",
-      "text": "2번 포스트",
-      "idDone": false
+      "id": "03b3",
+      "text": "1번",
+      "isDone": false,
+      "finish": false
     },
     {
-      "id": "83jg",
-      "text": "3번 포스트",
-      "idDone": false
+      "id": "09fb",
+      "text": "config",
+      "isDone": true,
+      "finish": true
     },
     {
-      "id": "8bdu",
-      "text": "4번 포스트",
-      "idDone": false
+      "id": "28a7",
+      "text": "4번",
+      "isDone": true,
+      "finish": true
     },
     {
-      "id": "eb1f",
-      "text": "shdfda",
-      "isDone": false
+      "id": "a4f3",
+      "text": "5번",
+      "isDone": false,
+      "finish": true
     }
   ]
 }
