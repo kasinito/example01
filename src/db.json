@@ -15,20 +15,20 @@
     {
       "id": "09fb",
       "text": "config",
-      "isDone": true,
-      "finish": true
+      "isDone": false,
+      "finish": false
     },
     {
       "id": "28a7",
       "text": "4번",
-      "isDone": true,
-      "finish": true
+      "isDone": false,
+      "finish": false
     },
     {
       "id": "a4f3",
       "text": "5번",
       "isDone": false,
-      "finish": true
+      "finish": false
     }
   ]
 }
